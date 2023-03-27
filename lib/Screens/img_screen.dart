@@ -1,4 +1,8 @@
+// ignore_for_file: import_of_legacy_library_into_null_safe
+
 import 'package:flutter/material.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:flutter_wallpaper_manager/flutter_wallpaper_manager.dart';
 
 class ImgScreen extends StatefulWidget {
   const ImgScreen({
@@ -13,10 +17,17 @@ class ImgScreen extends StatefulWidget {
 }
 
 class _ImgScreenState extends State<ImgScreen> {
+  //* set wallpaper
   Future<void> setWallPaper() async {
-    int location = WallPaperManager.HOME_SCREEN;
+    int location = WallpaperManager.HOME_SCREEN;
     var file = await DefaultCacheManager().getSingleFile(widget.imgPath);
-    await WallPaperManager.setWallpaperFromFile(file.path, location);
+    await WallpaperManager.setWallpaperFromFile(file.path, location);
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Wallpaper Set'),
+      ),
+    );
   }
 
   @override
@@ -46,7 +57,7 @@ class _ImgScreenState extends State<ImgScreen> {
 
             //* Set Wallpaper
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () => setWallPaper(),
               child: const Text(
                 'Set Wallpaper',
                 style: TextStyle(

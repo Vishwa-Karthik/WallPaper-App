@@ -11,7 +11,10 @@ class ApiService {
   static Future<List> getImage() async {
     List<Wallpaper> listOfImages = [];
 
-    String url = 'https://api.pexels.com/v1/curated?per_page=75&page=1';
+    //* page number
+    int page = 1;
+
+    String url = 'https://api.pexels.com/v1/curated?per_page=75&page=$page';
     var responseData = await http.get(
       Uri.parse(url),
       headers: {

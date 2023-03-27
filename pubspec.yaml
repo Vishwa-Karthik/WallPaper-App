@@ -35,7 +35,8 @@ dependencies:
   http: ^0.13.5
   flutter_dotenv: ^5.0.2
   flutter_cache_manager: ^3.3.0
-  wallpaper_manager: ^1.0.10
+  flutter_wallpaper_manager: ^0.0.3
+  
 
 flutter_icons:
   android: "launcher_icon"
